@@ -19,8 +19,8 @@ RUN yum install epel-release http://rpms.remirepo.net/enterprise/remi-release-7.
 RUN sed -i  "0,/enabled=0/{s/enabled=0/enabled=1/}" /etc/yum.repos.d/remi.repo \
  && sed -i  "0,/enabled=0/{s/enabled=0/enabled=1/}" /etc/yum.repos.d/remi-php72.repo
 
-RUN yum install -y httpd mod_ssl php php-gd php-bcmath php-intl php-mcrypt php-mbstring php-process php-pdo php-mysqlnd php-xml php-pecl-zendopcache \
-php-pear php-pecl-mongodb php-pecl-couchbase2 php-phpunit-PHPUnit composer vim wget git bash-completion && yum clean all
+RUN yum install -y httpd mod_ssl php php-devel php-gd php-bcmath php-intl php-mcrypt php-mbstring php-process php-pdo php-mysqlnd php-xml php-pecl-zendopcache \
+php-pear php-pecl-mongodb php-pecl-couchbase2 php-phpunit-PHPUnit composer vim wget git bash-completion zeromq zeromq-devel php-pecl-zmq && yum clean all
 
 RUN echo "IncludeOptional vhost.d/*.conf" >> /etc/httpd/conf/httpd.conf \
  && sed -i "s|User apache|User user|" /etc/httpd/conf/httpd.conf \
